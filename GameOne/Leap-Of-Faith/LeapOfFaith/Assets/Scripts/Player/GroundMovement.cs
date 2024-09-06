@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
-    //use the new inut system to move the player in all 4 directions and jump
-    
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _jumpForce = 10.0f;
-    
-    //Movement function
+    private Rigidbody _rigidbody;
+    private Controls _controls;
+
+    private void Awake()
+    {
+        // Get the Rigidbody component attached to the GameObject
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public void Initialize(Controls controls)
+    {
+        // Set the Controls instance
+        _controls = controls;
+    }
+
     public void Move()
     {
-        //Get the input from the new input system
-        //Move the player in all 4 directions
+        // Read input from the Controls instance
+        Vector2 input = _controls.Movement.WASD.ReadValue<Vector2>();
+        
+        // Calculate movement direction and apply speed
+        Vector3 direction = new Vector3(input.x, 0, input.y) * _speed;
+        
+        // Update Rigidbody velocity for movement
+        Vector3 velocity = _rigidbody.velocity;
+        velocity.x = direction.x;
+        velocity.z = direction.z;
+        _rigidbody.velocity = velocity;
     }
-    
-    //Jump function
+
     public void Jump()
     {
-        //Get the input from the new input system
-        //Jump the player
+        // Apply upward force for jumping
+        _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 }

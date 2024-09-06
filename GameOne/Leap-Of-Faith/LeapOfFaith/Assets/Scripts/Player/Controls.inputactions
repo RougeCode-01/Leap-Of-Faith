@@ -9,7 +9,7 @@
                     "name": "WASD",
                     "type": "Value",
                     "id": "54a87472-3140-4987-a317-d487d77c21ca",
-                    "expectedControlType": "Vector3",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -26,9 +26,20 @@
             ],
             "bindings": [
                 {
-                    "name": "3D Vector",
-                    "id": "7a107437-e9a5-4f84-95ae-a9cf2595acda",
-                    "path": "3DVector",
+                    "name": "",
+                    "id": "bfb94fb7-7a13-4d21-b2f6-5d77ab01bb2b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "323a7c35-f5cc-4e30-8133-e2383a3d2fc5",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -38,7 +49,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "d2fa3b5c-b5ce-49a8-952d-cd604757f9e5",
+                    "id": "7647f29d-d21d-4795-a944-6883bf865a8f",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -49,7 +60,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "7703b99c-bb0a-4d95-99b8-cb0bf50c21bd",
+                    "id": "dd09b097-60e0-4a11-94ac-124a02fb16af",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -60,7 +71,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "c847efd8-f09e-4062-a290-32a1038f96b8",
+                    "id": "15108e20-1ddc-4d8d-820c-c68aff5cec9d",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -71,7 +82,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "c4b9a4ee-3756-4f23-a866-bdc6e85b1fb8",
+                    "id": "78a9a7e5-a384-4d17-a7b6-54d3573dfbb8",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -79,39 +90,6 @@
                     "action": "WASD",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "forward",
-                    "id": "3038f275-375f-4bea-9a62-de9544b4a3c8",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WASD",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "92789cab-9b1f-4a6f-bf13-15db241bfd5e",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WASD",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "bfb94fb7-7a13-4d21-b2f6-5d77ab01bb2b",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
