@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int healthPoints = 3; // Initial health points
-    [SerializeField] private int eggAmount = 3; // Initial egg amount
+    [SerializeField] public int healthPoints = 3; // Initial health points
+    [SerializeField] public int eggAmount = 3; // Initial egg amount
     [SerializeField] private Transform startingPosition; // Reference to the starting position
 
     private void Update()
