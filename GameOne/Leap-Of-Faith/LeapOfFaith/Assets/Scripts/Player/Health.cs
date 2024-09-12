@@ -11,9 +11,8 @@ public class Health : MonoBehaviour
         // Check if health points are zero or less
         if (healthPoints <= 0)
         {
-            HandleHealthDepletion();
+            HealthDepletion();
         }
-        Debug.Log("Health points: " + healthPoints); // Log the health points
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,10 +29,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void HandleHealthDepletion()
+    private void HealthDepletion()
     {
         eggAmount--; // Decrease egg amount
-        Debug.Log("Egg amount: " + eggAmount); // Log the egg amount
 
         // Check if egg amount is zero
         if (eggAmount <= 0)
@@ -46,7 +44,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void ResetPlayer()
+    public void ResetPlayer()
     {
         transform.position = startingPosition.position;
         healthPoints = 3;
@@ -55,5 +53,6 @@ public class Health : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Game Over!"); // Log game over message
+        //load the game over scene
     }
 }

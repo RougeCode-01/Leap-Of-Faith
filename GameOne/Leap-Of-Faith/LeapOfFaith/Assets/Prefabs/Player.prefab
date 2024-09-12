@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8091043554489326741}
   - component: {fileID: 2354396232475783961}
+  - component: {fileID: 3901884072335352210}
   - component: {fileID: 1528157846139192}
   - component: {fileID: 4182854093501670273}
   - component: {fileID: 5563195906107622428}
@@ -54,6 +55,19 @@ MonoBehaviour:
   healthPoints: 3
   eggAmount: 3
   startingPosition: {fileID: 0}
+--- !u!114 &3901884072335352210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291393304221974586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ead98c73e04841789d19b0c9e4d0b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 300
 --- !u!114 &1528157846139192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,8 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5297349077d3b48ba7094f935a6697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _jumpForce: 5
+  speed: 5
+  jumpForce: 5
+  jumpCost: 5
+  walkCost: 0
 --- !u!114 &5563195906107622428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,9 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0512d25279dbf945800f6072bb2db6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 3
+  rollForce: 0.01
   diveSpeed: 10
-  drag: 2
+  drag: 3
+  rollCost: 0.01
+  diveCost: 5
 --- !u!33 &5691261557150889678
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -171,7 +189,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &854020480538157247
 BoxCollider:
   m_ObjectHideFlags: 0
