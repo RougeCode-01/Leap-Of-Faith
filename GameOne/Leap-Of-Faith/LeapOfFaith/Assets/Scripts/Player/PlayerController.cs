@@ -1,68 +1,80 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool _isGrounded;
     private GroundMovement _groundMovement;
     private AirMovement _airMovement;
     private Controls _controls;
-    private bool _isGrounded;
 
     private void Awake()
     {
-        // Get references to GroundMovement and AirMovement components
         _groundMovement = GetComponent<GroundMovement>();
         _airMovement = GetComponent<AirMovement>();
-        
-        // Initialize the Controls instance
-        _controls = new Controls();
-        
-        // Pass the Controls instance to GroundMovement and AirMovement
+        _controls = new Controls(); // Initialize the Controls object
         _groundMovement.Initialize(_controls);
         _airMovement.Initialize(_controls);
     }
 
     private void OnEnable()
     {
-        // Enable the Controls instance
-        _controls.Enable();
+        _controls.Enable(); // Enable the Controls object
     }
 
     private void OnDisable()
     {
-        // Disable the Controls instance
-        _controls.Disable();
+        _controls.Disable(); // Disable the Controls object
+    }
+
+    private void FixedUpdate()
+    {
+        // Update movements based on ground check
+        if (_isGrounded)
+        {
+            Debug.Log("Player is grounded. Calling Move.");
+            _groundMovement.Move();
+        }
+        else
+        {
+            _airMovement.HandleAirMovement();
+        }
     }
 
     private void Update()
     {
-        if (_isGrounded)
+        // Handle jumping in Update to ensure it responds to input
+        if (_isGrounded && _controls.Movement.Jump.triggered)
         {
-            // Handle ground movement
-            _groundMovement.Move();
-            
-            // Check for jump input
-            if (_controls.Movement.Jump.triggered)
-            {
-                _groundMovement.Jump();
-                _isGrounded = false;
-            }
-        }
-        else
-        {
-            // Handle air movement
-            _airMovement.Roll();
-            _airMovement.Dive();
+            _groundMovement.Jump();
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        // Check if the player has landed on the ground
-        if (other.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = true;
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = false;
+        }
+    }
+
+    public bool IsGrounded()
+    {
+        return _isGrounded;
     }
 }

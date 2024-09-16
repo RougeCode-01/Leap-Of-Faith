@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -53,6 +54,6 @@ public class Health : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Game Over!"); // Log game over message
-        //load the game over scene
+        SceneManager.LoadScene("GameOver"); // Load the GameOver scene
     }
 }

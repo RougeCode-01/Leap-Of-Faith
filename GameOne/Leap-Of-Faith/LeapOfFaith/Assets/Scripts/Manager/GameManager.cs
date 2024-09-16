@@ -1,18 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool _isPaused = false;
+
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePauseGame();
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            QuitGame();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TogglePauseGame()
     {
-        
+        _isPaused = !_isPaused;
+        Time.timeScale = _isPaused ? 0 : 1;
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        SceneManager.LoadScene("GameFinished");
     }
 }
