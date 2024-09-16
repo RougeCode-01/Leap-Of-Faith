@@ -15,6 +15,8 @@ public class Coyote : MonoBehaviour
         Transform targetWaypoint = waypoints[_currentWaypointIndex];
         // Calculate direction to the target waypoint
         Vector3 direction = (targetWaypoint.position - transform.position).normalized;
+        // Rotate the coyote to look at the target waypoint
+        transform.LookAt(targetWaypoint.position);
         // Move towards the target waypoint
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, speed * Time.deltaTime);
 
