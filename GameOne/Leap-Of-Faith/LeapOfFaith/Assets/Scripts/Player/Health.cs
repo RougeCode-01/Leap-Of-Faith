@@ -32,7 +32,8 @@ public class Health : MonoBehaviour
 
     private void HealthDepletion()
     {
-        eggAmount--; // Decrease egg amount
+        // Decrease egg amount
+        eggAmount--;
 
         // Check if egg amount is zero
         if (eggAmount <= 0)
@@ -47,13 +48,15 @@ public class Health : MonoBehaviour
 
     public void ResetPlayer()
     {
+        // Reset player's position and health points
         transform.position = startingPosition.position;
         healthPoints = 3;
     }
 
     private void EndGame()
     {
-        Debug.Log("Game Over!"); // Log game over message
-        SceneManager.LoadScene("GameOver"); // Load the GameOver scene
+        // Log game over message and load the GameOver scene
+        Debug.Log("Game Over!");
+        SceneManager.LoadScene("GameOver");
     }
 }

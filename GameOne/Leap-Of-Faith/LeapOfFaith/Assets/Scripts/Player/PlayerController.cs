@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool _isGrounded;
-    private GroundMovement _groundMovement;
-    private AirMovement _airMovement;
-    private Controls _controls;
+    private bool _isGrounded; // Flag to check if the player is grounded
+    private GroundMovement _groundMovement; // Reference to the GroundMovement component
+    private AirMovement _airMovement; // Reference to the AirMovement component
+    private Controls _controls; // Reference to the Controls component
 
     private void Awake()
     {
+        // Get the GroundMovement and AirMovement components
         _groundMovement = GetComponent<GroundMovement>();
         _airMovement = GetComponent<AirMovement>();
         _controls = new Controls(); // Initialize the Controls object
@@ -18,12 +19,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        _controls.Enable(); // Enable the Controls object
+        // Enable the Controls object
+        _controls.Enable();
     }
 
     private void OnDisable()
     {
-        _controls.Disable(); // Disable the Controls object
+        // Disable the Controls object
+        _controls.Disable();
     }
 
     private void FixedUpdate()
@@ -31,7 +34,6 @@ public class PlayerController : MonoBehaviour
         // Update movements based on ground check
         if (_isGrounded)
         {
-            Debug.Log("Player is grounded. Calling Move.");
             _groundMovement.Move();
         }
         else
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Check if collided with the ground
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = true;
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        // Check if staying in contact with the ground
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = true;
@@ -67,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        // Check if exited contact with the ground
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = false;
@@ -75,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
+        // Return the grounded state
         return _isGrounded;
     }
 }
