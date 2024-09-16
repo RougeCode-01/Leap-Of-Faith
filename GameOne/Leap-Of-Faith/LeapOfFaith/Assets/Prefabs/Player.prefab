@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5691261557150889678}
   - component: {fileID: 7134814167266597110}
   - component: {fileID: 9211738323225679040}
-  - component: {fileID: 2184102289090500647}
+  - component: {fileID: 4947932024202130354}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 300
-  foodGain: 20
+  foodGain: 100
 --- !u!114 &1528157846139192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   jumpCost: 5
-  walkCost: 0
+  walkCost: 0.01
 --- !u!114 &5563195906107622428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5291393304221974586}
   serializedVersion: 4
-  m_Mass: 0.5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -191,8 +191,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!64 &2184102289090500647
-MeshCollider:
+--- !u!65 &4947932024202130354
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -207,9 +207,8 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 752d4579139fa452097b0e32d82c720a, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.65625, y: 1.171875, z: 1.171875}
+  m_Center: {x: -0.046875, y: 0.5859375, z: 0.2578125}
