@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 300
-  foodGain: 100
+  foodGain: 25
 --- !u!114 &1528157846139192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0512d25279dbf945800f6072bb2db6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollForce: 0.01
+  rollForce: 0.5
   diveSpeed: 10
   drag: 3
   rollCost: 0.01
