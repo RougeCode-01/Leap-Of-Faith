@@ -11,17 +11,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure only one instance of GameManager exists
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist GameManager across scenes
-        }
-        else
-        {
-            Destroy(gameObject); // Destroy duplicate GameManager
-        }
-
         // Initialize the pause panel state
         pausePanel.SetActive(_isPaused);
     }

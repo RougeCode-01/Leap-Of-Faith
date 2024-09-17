@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Check if collided with the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Cliff"))
         {
             _isGrounded = true;
         }
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         // Check if staying in contact with the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Cliff"))
         {
             _isGrounded = true;
         }
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         // Check if exited contact with the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Cliff"))
         {
             _isGrounded = false;
         }
