@@ -6,6 +6,7 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 10.0f; // Force applied when the player jumps
     [SerializeField] private float jumpCost = 0.5f; // Stamina cost for jumping
     [SerializeField] private float walkCost = 0.1f; // Stamina cost for walking
+    [SerializeField] private float rotationSpeed = 10.0f; // Speed of rotation
     private Rigidbody _rigidbody; // Reference to the Rigidbody component
     private Controls _controls; // Reference to the Controls component
     private Stamina _stamina; // Reference to the Stamina component
@@ -37,6 +38,9 @@ public class GroundMovement : MonoBehaviour
             velocity.x = direction.x;
             velocity.z = direction.z;
             _rigidbody.velocity = velocity;
+
+            // Rotate the player to face the direction of movement
+            FaceMovementDirection(direction);
         }
     }
 
@@ -47,6 +51,19 @@ public class GroundMovement : MonoBehaviour
         {
             // Apply force for jumping
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    private void FaceMovementDirection(Vector3 direction)
+    {
+        // Check if the player is moving
+        if (direction.sqrMagnitude > 0.1f)
+        {
+            // Calculate the direction the player should face
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            // Smoothly rotate the player to face the direction of movement
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
     }
 }

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  radius: 10
-  height: 1
+  radius: 5
+  height: 0
   centerPoint: {fileID: 0}
 --- !u!33 &989243370768135835
 MeshFilter:
@@ -78,7 +78,7 @@ MeshCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: a0fd0bc9973b8490c8fce0005c8d2715, type: 3}
 --- !u!23 &550952956094996746

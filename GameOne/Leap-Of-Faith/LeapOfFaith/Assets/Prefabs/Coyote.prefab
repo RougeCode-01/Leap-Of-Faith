@@ -55,7 +55,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   chaseSpeed: 4
   detectionRange: 20
   chaseDelay: 1
