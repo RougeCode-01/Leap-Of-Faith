@@ -56,7 +56,6 @@ public class Health : MonoBehaviour
     private void EndGame()
     {
         // Log game over message and load the GameOver scene
-        Debug.Log("Game Over!");
         SceneManager.LoadScene("GameOver");
     }
 }
