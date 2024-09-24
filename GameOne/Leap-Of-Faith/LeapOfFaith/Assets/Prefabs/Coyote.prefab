@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9122221594775374996}
   - component: {fileID: 6068476911009934939}
   - component: {fileID: 7606340037072635132}
-  - component: {fileID: 7026592526135800020}
+  - component: {fileID: 4086483607318691616}
   m_Layer: 0
   m_Name: Coyote
   m_TagString: Enemies
@@ -227,7 +227,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &7026592526135800020
+--- !u!65 &4086483607318691616
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
