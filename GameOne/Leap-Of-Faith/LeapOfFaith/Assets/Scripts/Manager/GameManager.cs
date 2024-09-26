@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel; // Reference to the pause panel UI
+    [SerializeField] private GameObject endGamePanel; // Reference to the end game panel UI
     private bool _isPaused = false; // Flag to check if the game is paused
     public static GameManager Instance { get; private set; } // Singleton instance of GameManager
 
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     {
         // Initialize the pause panel state
         pausePanel.SetActive(_isPaused);
+        endGamePanel.SetActive(false); // Ensure the end game panel is initially inactive
     }
 
     private void Update()
@@ -51,16 +53,35 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // End the game if the player collides with the GameManager
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            EndGame();
+            ShowEndGamePanel();
         }
     }
 
-    private void EndGame()
+    private void ShowEndGamePanel()
+    {
+        // Show the end game panel
+        endGamePanel.SetActive(true);
+        // Pause the game
+        Time.timeScale = 0;
+    }
+
+    public void OnSaveAnotherDuck()
+    {
+        // Deactivate the end game panel
+        endGamePanel.SetActive(false);
+        // Reset the player's position and health points
+        Health playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        playerHealth.ResetPlayer();
+        // Resume the game
+        Time.timeScale = 1;
+    }
+
+    public void OnEndGame()
     {
         // Load the GameFinished scene
         SceneManager.LoadScene("GameFinished");

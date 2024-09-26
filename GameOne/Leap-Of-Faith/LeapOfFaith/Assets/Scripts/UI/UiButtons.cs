@@ -27,7 +27,7 @@ public class UiButtons : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    // Method to resume the game by setting the time scale to 1 and hiding the pause panel
+    // Method to resume the game by setting the timescale to 1 and hiding the pause panel
     public void ResumeGame()
     {
         Time.timeScale = 1;
