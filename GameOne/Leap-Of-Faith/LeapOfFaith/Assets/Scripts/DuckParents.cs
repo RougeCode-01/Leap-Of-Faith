@@ -7,8 +7,8 @@ public class DuckParents : MonoBehaviour
     [SerializeField] private float speed = 2.0f; // Speed of movement
     [SerializeField] private AudioSource duckCall; // AudioSource for duck call
 
-    private int currentWaypointIndex = 0; // Current waypoint index
-    private bool waitingForPlayer = false; // Flag to check if waiting for player
+    private int _currentWaypointIndex = 0; // Current waypoint index
+    private bool _waitingForPlayer = false; // Flag to check if waiting for player
 
     private void Start()
     {
@@ -20,10 +20,10 @@ public class DuckParents : MonoBehaviour
     {
         while (true)
         {
-            if (!waitingForPlayer)
+            if (!_waitingForPlayer)
             {
                 // Move towards the current waypoint
-                Transform targetWaypoint = waypoints[currentWaypointIndex];
+                Transform targetWaypoint = waypoints[_currentWaypointIndex];
                 while (Vector3.Distance(transform.position, targetWaypoint.position) > 0.1f)
                 {
                     // Look at the target waypoint
@@ -34,7 +34,7 @@ public class DuckParents : MonoBehaviour
                 }
 
                 // Wait for player collision
-                waitingForPlayer = true;
+                _waitingForPlayer = true;
                 duckCall.Play(); // Play duck call sound
             }
             yield return null;
@@ -43,12 +43,20 @@ public class DuckParents : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (waitingForPlayer && other.CompareTag("Player"))
+        if (_waitingForPlayer && other.CompareTag("Player"))
         {
             // Player collided, move to the next waypoint
-            waitingForPlayer = false;
+            _waitingForPlayer = false;
             duckCall.Stop(); // Stop duck call sound
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
         }
+    }
+    
+    public void ResetLocation()
+    {
+        // Reset the duck's location to the first waypoint
+        transform.position = waypoints[0].position;
+        _currentWaypointIndex = 0;
+        _waitingForPlayer = false;
     }
 }

@@ -10,10 +10,14 @@ public class Health : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private float _lastYVelocity;
+    private Stamina _stamina;
+    private DuckParents _duckParents;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _stamina = GetComponent<Stamina>();
+        _duckParents = FindObjectOfType<DuckParents>();
     }
 
     private void Update()
@@ -27,7 +31,7 @@ public class Health : MonoBehaviour
         // Track the player's vertical velocity
         _lastYVelocity = _rigidbody.velocity.y;
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         // Check if collided with an enemy
@@ -49,7 +53,7 @@ public class Health : MonoBehaviour
             }
         }
     }
-    
+
     private void TakeFallDamage()
     {
         healthPoints--; // Decrease health points by 1 for fall damage
@@ -76,6 +80,8 @@ public class Health : MonoBehaviour
         // Reset player's position and health points
         transform.position = startingPosition.position;
         healthPoints = 3;
+        _stamina.ResetStamina(); // Reset stamina
+        _duckParents.ResetLocation(); // Reset duck's location
     }
 
     private void EndGame()

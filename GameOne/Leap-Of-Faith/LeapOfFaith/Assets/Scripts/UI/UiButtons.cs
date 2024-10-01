@@ -6,7 +6,7 @@ public class UiButtons : MonoBehaviour
     // Method to start the game by loading the SampleScene
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1(not ready yet)");
     }
 
     // Method to quit the game application
@@ -18,7 +18,7 @@ public class UiButtons : MonoBehaviour
     // Method to restart the game by reloading the SampleScene
     public void RestartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1(not ready yet)");
     }
 
     // Method to go back to the main menu by loading the MainMenu scene

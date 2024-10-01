@@ -54,7 +54,7 @@ public class Coyote : MonoBehaviour
         _navMeshAgent.destination = waypoints[_currentWaypointIndex].position;
 
         // Check if the coyote is close to the current waypoint
-        if (Vector3.Distance(transform.position, waypoints[_currentWaypointIndex].position) < 0.1f)
+        if (Vector3.Distance(transform.position, waypoints[_currentWaypointIndex].position) < 1f)
         {
             // Move to the next waypoint
             _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;

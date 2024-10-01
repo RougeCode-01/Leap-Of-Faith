@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
-    [SerializeField] private float maxStamina = 100.0f; // Maximum stamina value
+    [SerializeField] private float maxStamina = 300.0f; // Maximum stamina value
     [SerializeField] private float foodGain = 20.0f; // Stamina gained from food
     private float _currentStamina = 100.0f;
     private Health _health;
@@ -56,5 +56,10 @@ public class Stamina : MonoBehaviour
             GainStamina(foodGain); // Increase stamina by 10
             Destroy(other.gameObject); // Destroy the food item
         }
+    }
+
+    public void ResetStamina()
+    {
+        _currentStamina = maxStamina; // Reset current stamina to maximum stamina
     }
 }

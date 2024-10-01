@@ -12,6 +12,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // Singleton pattern to ensure only one instance of GameManager exists
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         // Initialize the pause panel state
         pausePanel.SetActive(_isPaused);
         endGamePanel.SetActive(false); // Ensure the end game panel is initially inactive
